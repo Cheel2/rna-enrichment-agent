@@ -1,0 +1,34 @@
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+      - SEARXNG_SECRET=rna_secret_change_me_2026
+    restart: unless-stopped
+    networks:
+      - enrichment_net
+
+  enricher:
+    build: .
+    container_name: enricher
+    depends_on:
+      - searxng
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./src:/app/src
+      - ./scripts:/app/scripts
+    environment:
+      - SEARXNG_URL=http://searxng:8080
+    command: tail -f /dev/null
+    networks:
+      - enrichment_net
+
+networks:
+  enrichment_net:
+    driver: bridge
