@@ -59,6 +59,9 @@ def analyze_page(url, asso_name, ville):
         "instagram": None,
         "facebook": None,
         "linkedin": None,
+        "tiktok": None,
+        "twitter": None,
+        "youtube": None,
         "domain": get_domain(url),
     }
 
@@ -73,5 +76,11 @@ def analyze_page(url, asso_name, ville):
             signals["facebook"] = href
         elif "linkedin.com/company/" in href and not signals["linkedin"]:
             signals["linkedin"] = href
+        elif "tiktok.com/@" in href and not signals["tiktok"]:
+            signals["tiktok"] = href
+        elif ("twitter.com/" in href or "x.com/" in href) and not signals["twitter"]:
+            signals["twitter"] = href
+        elif "youtube.com/" in href and not signals["youtube"]:
+            signals["youtube"] = href
 
     return signals

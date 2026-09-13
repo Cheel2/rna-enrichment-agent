@@ -21,6 +21,9 @@ WEIGHTS = {
     "has_email": 5,
     "has_instagram": 3,
     "has_facebook": 3,
+    "has_tiktok": 2,
+    "has_twitter": 2,
+    "has_youtube": 2,
 }
 
 BLACKLIST_DOMAINS = [

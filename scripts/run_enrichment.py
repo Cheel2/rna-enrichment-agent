@@ -50,7 +50,7 @@ def main():
     df_result = pd.DataFrame(results)
     df_merged = df.merge(
         df_result[['prospect_id', 'site_web', 'email', 'instagram',
-                   'facebook', 'linkedin', 'score', 'status', 'raisons']],
+                   'facebook', 'linkedin', 'tiktok', 'twitter', 'youtube', 'score', 'status', 'raisons']],
         on='prospect_id', how='left'
     )
 

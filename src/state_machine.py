@@ -67,6 +67,9 @@ def enrich_one(asso):
         result["instagram"] = best_signals.get("instagram") or ""
         result["facebook"] = best_signals.get("facebook") or ""
         result["linkedin"] = best_signals.get("linkedin") or ""
+        result["tiktok"] = best_signals.get("tiktok") or ""
+        result["twitter"] = best_signals.get("twitter") or ""
+        result["youtube"] = best_signals.get("youtube") or ""
         result["status"] = scorer.classify(best_score)
 
     set_cache(cache_key, result)
